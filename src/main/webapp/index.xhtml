@@ -65,10 +65,10 @@
 					    	<div class="col-5 d-flex flex-column justify-content-around">
 				    			<h:form>
 					    		<p:menu>
-					                <p:menuitem value="Ingresar" action="#{menuView.save}" update="messages" icon="pi pi-plus"/>
-					                <p:menuitem value="Modificar" action="#{menuView.update}" update="messages" icon="pi pi-refresh"/>
-					                <p:menuitem value="Eliminar" action="#{menuView.delete}" update="messages" icon="pi pi-times"/>
-						            <p:menuitem value="Buscar" action="#{menuView.delete}" update="messages" icon="pi pi-search"/>
+					                <p:menuitem value="Ingresar" action="#{hospitalBean.newHospital}" icon="pi pi-plus"/>
+					                <p:menuitem value="Modificar" action="#{hospitalBean.editHospital}" icon="pi pi-refresh"/>
+					                <p:menuitem value="Eliminar" action="#{hospitalBean.deleteHospital}" icon="pi pi-times"/>
+						            <p:menuitem value="Buscar" outcome="/pages/hospital/index.xhtml" icon="pi pi-search"/>
 						        </p:menu>
 						        </h:form>
 					    	</div>

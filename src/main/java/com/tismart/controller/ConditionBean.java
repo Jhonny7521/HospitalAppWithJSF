@@ -29,7 +29,7 @@ public class ConditionBean {
 	public String saveCondition(Condition condition) {
 		ConditionDAO conditionDAO = new ConditionDAO();
 		conditionDAO.saveCondition(condition);
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public List<Condition> getAllConditions(){
@@ -50,7 +50,7 @@ public class ConditionBean {
 		
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("condition", condition);
-		return "/pages/condition/editCondition.xhtml";
+		return "editCondition.xhtml";
 	}
 	
 	public String updateCondition(Condition condition) {
@@ -58,14 +58,14 @@ public class ConditionBean {
 		ConditionDAO conditionDAO = new ConditionDAO();
 		conditionDAO.updateCondition(condition);
 		
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public String deleteCondition(int id) {
 		ConditionDAO conditionDAO = new ConditionDAO();
 		conditionDAO.deleteCondition(id);
 		System.out.println("Provincia eliminada");
-		return "/faces/index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 }

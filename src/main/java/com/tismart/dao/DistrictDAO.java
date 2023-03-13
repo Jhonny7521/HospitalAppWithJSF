@@ -18,6 +18,7 @@ public class DistrictDAO {
 	
 	public void saveDistrict(District district) {
 		
+		System.out.println(district);
 		entity.getTransaction().begin();
 		entity.persist(district);
 		entity.getTransaction().commit();

@@ -27,22 +27,11 @@ public class ProvinceBean {
 	public String saveProvince(Province province) {
 		ProvinceDAO provinceDAO = new ProvinceDAO();
 		provinceDAO.saveProvince(province);
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public List<Province> getAllProvinces(){
-		
-		/*List<Province> provinceList = new ArrayList<>();
-		Province p1 = new Province();
-		p1.setProvinceDescription("Provincia 1");
-		Province p2 = new Province();
-		p2.setProvinceDescription("Provincia 2");
-		
-		provinceList.add(p1);
-		provinceList.add(p2);
-		
-		return provinceList;*/
-		
+				
 		ProvinceDAO provinceDAO = new ProvinceDAO();
 		
 		return provinceDAO.getAllProvinces();
@@ -59,7 +48,7 @@ public class ProvinceBean {
 		
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("province", province);
-		return "/faces/editProvince.xhtml";
+		return "editProvince.xhtml";
 	}
 	
 	public String updateProvince(Province province) {
@@ -67,13 +56,13 @@ public class ProvinceBean {
 		ProvinceDAO provinceDAO = new ProvinceDAO();
 		provinceDAO.updateProvince(province);
 		
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public String deleteProvince(int id) {
 		ProvinceDAO provinceDAO = new ProvinceDAO();
 		provinceDAO.deleteProvince(id);
 		System.out.println("Provincia eliminada");
-		return "/faces/index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 }

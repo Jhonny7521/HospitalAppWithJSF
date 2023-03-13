@@ -64,9 +64,33 @@
             </p:column>
 
             <p:column headerText="Descripción">
-                <h:outputText value="#{hospital.hospitalDescription}" />
+                <h:outputText value="#{hospital.hospitalName}" />
+            </p:column>
+            
+            <p:column headerText="Antiguedad">
+                <h:outputText value="#{hospital.hospitalAge}" />
             </p:column>
 
+			<p:column headerText="Area">
+                <h:outputText value="#{hospital.hospitalArea}" />
+            </p:column>
+            
+            <p:column headerText="Distrito">
+                <h:outputText value="#{hospital.district}" />
+            </p:column>
+            
+            <p:column headerText="Sede">
+                <h:outputText value="#{hospital.location}" />
+            </p:column>
+            
+            <p:column headerText="Gerente">
+                <h:outputText value="#{hospital.manager}" />
+            </p:column>
+            
+            <p:column headerText="Condición">
+                <h:outputText value="#{hospital.condition}" />
+            </p:column>
+            
             <p:column headerText="Fecha de Registro">
                 <h:outputText value="#{hospital.createdAt}" />
             </p:column>

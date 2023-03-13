@@ -9,8 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -30,12 +28,11 @@ public class District {
 	@Column(name="CREATEDAT", updatable = false)
 	private Date createdAt;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="IDPROVINCE")
-	private Province province;
+	@Column(name="IDPROVINCE")
+	private Integer idProvince;
 	
-	@OneToMany(mappedBy = "district", fetch = FetchType.LAZY)
-	private List<Hospital> hospital;
+//	@OneToMany(mappedBy = "district", fetch = FetchType.LAZY)
+//	private List<Hospital> hospital;
 
 	public Integer getId() {
 		return id;
@@ -61,18 +58,18 @@ public class District {
 		this.createdAt = createdAt;
 	}
 
-	public Province getProvince() {
-		return province;
+	public Integer getIdProvince() {
+		return idProvince;
 	}
 
-	public void setProvince(Province province) {
-		this.province = province;
+	public void setIdProvince(Integer idProvince) {
+		this.idProvince = idProvince;
 	}
 
 	@Override
 	public String toString() {
 		return "Districts [id=" + id + ", districtDescription=" + districtDescription + ", createdAt=" + createdAt
-				+ ", province=" + province + "]";
+				+ ", province=" + idProvince + "]";
 	}
 	
 	@PrePersist

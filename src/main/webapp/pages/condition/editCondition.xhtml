@@ -66,8 +66,10 @@
 						                    <p:inputText value="#{condition.conditionDescription}" placeholder="Descripción"/>
 						                </div>
 						            </div>							
-									<p:commandButton action="#{provinceBean.saveProvince(province)}" value="Guardar" class="mt-3"/>
-
+									<div class="d-flex justify-content-between aling-items-center">
+										<p:commandButton action="/pages/condition/index.xhtml" value="Volver" class="mt-3 me-2" icon="pi pi-chevron-left"/>
+										<p:commandButton action="#{conditionBean.updateCondition(condition)}" value="Actualizar" class="mt-3"/>
+						            </div>	
 						        </h:form>
 					    	</div>
 					    	<div class="col-5">

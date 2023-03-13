@@ -29,8 +29,8 @@ public class Condition {
 	@Column(name="CREATEDAT", updatable = false)
 	private Date createdAt;
 	
-	@OneToMany(mappedBy = "condition", fetch = FetchType.LAZY)
-	private List<Hospital> hospital;
+//	@OneToMany(mappedBy = "condition", fetch = FetchType.LAZY)
+//	private List<Hospital> hospital;
 
 	public Integer getId() {
 		return id;
@@ -48,13 +48,13 @@ public class Condition {
 		this.conditionDescription = conditionDescription;
 	}
 
-	public List<Hospital> getHospital() {
-		return hospital;
-	}
-
-	public void setHospital(List<Hospital> hospital) {
-		this.hospital = hospital;
-	}
+//	public List<Hospital> getHospital() {
+//		return hospital;
+//	}
+//
+//	public void setHospital(List<Hospital> hospital) {
+//		this.hospital = hospital;
+//	}
 
 	public Date getCreatedAt() {
 		return createdAt;

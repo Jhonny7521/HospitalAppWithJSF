@@ -8,7 +8,9 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import com.tismart.dao.DistrictDAO;
+import com.tismart.dao.ProvinceDAO;
 import com.tismart.model.District;
+import com.tismart.model.Province;
 
 @ManagedBean(name = "districtBean")
 @RequestScoped
@@ -19,13 +21,15 @@ public class DistrictBean {
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("district", district);
 		
-		return "/pages/district/districtForm.xhtml";
+		
+		return "newDistrict.xhtml";
 	}
 	
 	public String saveDistrict(District district) {
+		System.out.println(district);
 		DistrictDAO districtDAO = new DistrictDAO();
 		districtDAO.saveDistrict(district);
-		return "/pages/district/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public List<District> getAllDistricts(){
@@ -33,6 +37,13 @@ public class DistrictBean {
 		DistrictDAO districtDAO = new DistrictDAO();
 		
 		return districtDAO.getAllDistricts();
+	}
+	
+	public List<Province> getAllProvinces(){
+		
+		ProvinceDAO provinceDAO = new ProvinceDAO();
+		
+		return provinceDAO.getAllProvinces();
 	}
 	
 	public String editDistrict(int id) {
@@ -46,7 +57,7 @@ public class DistrictBean {
 		
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("district", district);
-		return "/pages/district/districtForm.xhtml";
+		return "editDistrict.xhtml";
 	}
 	
 	public String updateDistrict(District district) {
@@ -54,14 +65,14 @@ public class DistrictBean {
 		DistrictDAO districtDAO = new DistrictDAO();
 		districtDAO.updateDistrict(district);
 		
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public String deleteDistrict(int id) {
 		DistrictDAO districtDAO = new DistrictDAO();
 		districtDAO.deleteDistrict(id);
-		System.out.println("Provincia eliminada");
-		return "/faces/index.xhtml";
+		System.out.println("Distrito eliminado");
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 }

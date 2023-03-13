@@ -37,16 +37,18 @@ CREATE OR REPLACE PACKAGE HOSPITALS_PACKAGE AS
     ------------------------------------------
     -- GET ONE HOSPITAL
     ------------------------------------------
-    FUNCTION GET_ONE_HOSPITAL(
-        v_idHospital IN HOSPITALS.IDHOSPITAL%TYPE
-    )
-    RETURN HOSPITALS%ROWTYPE;
-    
+    PROCEDURE GET_ONE_HOSPITAL(
+        v_idHospital IN HOSPITALS.IDHOSPITAL%TYPE,
+        v_result OUT SYS_REFCURSOR
+    );
+
 
     ------------------------------------------
     -- GET ALL HOSPITALS
     ------------------------------------------
-    FUNCTION GET_ALL_HOSPITALS RETURN SYS_REFCURSOR;
+    PROCEDURE GET_ALL_HOSPITALS  (
+        c_result OUT SYS_REFCURSOR
+    );
 
     ------------------------------------------
     -- CHECK IF MANAGER OR LOCATION IS NOT RELATED
@@ -139,29 +141,25 @@ CREATE OR REPLACE PACKAGE BODY HOSPITALS_PACKAGE IS
     ------------------------------------------
     -- GET ONE HOSPITAL
     ------------------------------------------
-    FUNCTION GET_ONE_HOSPITAL(
-        v_idHospital IN HOSPITALS.IDHOSPITAL%TYPE
+    PROCEDURE GET_ONE_HOSPITAL(
+        v_idHospital IN HOSPITALS.IDHOSPITAL%TYPE,
+        v_result OUT SYS_REFCURSOR
     )
-    RETURN HOSPITALS%ROWTYPE
     IS
-        v_result HOSPITALS%ROWTYPE;
     BEGIN 
-        SELECT * INTO v_result FROM HOSPITALS WHERE IDHOSPITAL = v_idHospital;
-        RETURN v_result;
+        OPEN v_result FOR SELECT * FROM HOSPITALS WHERE IDHOSPITAL = v_idHospital;
     END;
-    
+
 
     ------------------------------------------
     -- GET ALL HOSPITALS
     ------------------------------------------
-    FUNCTION GET_ALL_HOSPITALS RETURN SYS_REFCURSOR
+    PROCEDURE GET_ALL_HOSPITALS  (
+        c_result OUT SYS_REFCURSOR
+    )
     IS
-    c_result SYS_REFCURSOR;
-    
     BEGIN
         OPEN c_result FOR SELECT * FROM HOSPITALS;
-        RETURN c_result;
-        CLOSE c_result;
     END;
     
     ------------------------------------------

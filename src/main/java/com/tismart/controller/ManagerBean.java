@@ -25,22 +25,11 @@ public class ManagerBean {
 	public String saveManager(Manager manager) {
 		ManagerDAO managerDAO = new ManagerDAO();
 		managerDAO.saveManager(manager);
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public List<Manager> getAllManagers(){
-		
-		/*List<Manager> managerList = new ArrayList<>();
-		Manager p1 = new Manager();
-		p1.setManagerDescription("Provincia 1");
-		Manager p2 = new Manager();
-		p2.setManagerDescription("Provincia 2");
-		
-		managerList.add(p1);
-		managerList.add(p2);
-		
-		return managerList;*/
-		
+				
 		ManagerDAO managerDAO = new ManagerDAO();
 		
 		return managerDAO.getAllManagers();
@@ -57,7 +46,7 @@ public class ManagerBean {
 		
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("manager", manager);
-		return "/faces/editManager.xhtml";
+		return "editManager.xhtml";
 	}
 	
 	public String updateManager(Manager manager) {
@@ -65,14 +54,14 @@ public class ManagerBean {
 		ManagerDAO managerDAO = new ManagerDAO();
 		managerDAO.updateManager(manager);
 		
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public String deleteManager(int id) {
 		ManagerDAO managerDAO = new ManagerDAO();
 		managerDAO.deleteManager(id);
 		System.out.println("Provincia eliminada");
-		return "/faces/index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 }

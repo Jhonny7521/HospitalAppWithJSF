@@ -28,8 +28,8 @@ public class Manager {
 	@Column(name = "CREATEDAT", updatable = false)
 	private Date createdAt;
 	
-	@OneToOne(mappedBy="manager", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Hospital hospital;
+//	@OneToOne(mappedBy="manager", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+//	private Hospital hospital;
 
 	public Integer getId() {
 		return id;
@@ -55,18 +55,18 @@ public class Manager {
 		this.createdAt = createdAt;
 	}
 
-	public Hospital getHospital() {
-		return hospital;
-	}
-
-	public void setHospital(Hospital hospital) {
-		this.hospital = hospital;
-	}
+//	public Hospital getHospital() {
+//		return hospital;
+//	}
+//
+//	public void setHospital(Hospital hospital) {
+//		this.hospital = hospital;
+//	}
 
 	@Override
 	public String toString() {
 		return "Manager [id=" + id + ", managerDescription=" + managerDescription + ", createdAt=" + createdAt
-				+ ", hospital=" + hospital + "]";
+				+ "]";
 	}
 	
 	@PrePersist

@@ -25,21 +25,10 @@ public class LocationBean {
 	public String saveLocation(Location location) {
 		LocationDAO locationDAO = new LocationDAO();
 		locationDAO.saveLocation(location);
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public List<Location> getAllLocations(){
-		
-		/*List<Location> locationList = new ArrayList<>();
-		Location p1 = new Location();
-		p1.setLocationDescription("Provincia 1");
-		Location p2 = new Location();
-		p2.setLocationDescription("Provincia 2");
-		
-		locationList.add(p1);
-		locationList.add(p2);
-		
-		return locationList;*/
 		
 		LocationDAO locationDAO = new LocationDAO();
 		
@@ -57,7 +46,7 @@ public class LocationBean {
 		
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("location", location);
-		return "/faces/editLocation.xhtml";
+		return "editLocation.xhtml";
 	}
 	
 	public String updateLocation(Location location) {
@@ -65,13 +54,13 @@ public class LocationBean {
 		LocationDAO locationDAO = new LocationDAO();
 		locationDAO.updateLocation(location);
 		
-		return "/faces/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public String deleteLocation(int id) {
 		LocationDAO locationDAO = new LocationDAO();
 		locationDAO.deleteLocation(id);
 		System.out.println("Provincia eliminada");
-		return "/faces/index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 }

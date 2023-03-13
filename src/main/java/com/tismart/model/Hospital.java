@@ -37,21 +37,25 @@ public class Hospital {
 	@Column(name = "CREATEDAT")
 	private Date createdAt;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDMANAGER")
-	private Manager manager;
+//	@OneToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "IDMANAGER")
+	@Column(name = "IDMANAGER")
+	private Integer manager;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDCONDITION")
-	private Condition condition;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "IDCONDITION")
+	@Column(name = "IDCONDITION")
+	private Integer condition;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDDISTRICT")
-	private District district;  
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "IDDISTRICT")
+	@Column(name = "IDDISTRICT")
+	private Integer district;  
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDLOCATION")
-	private Location location;
+//	@OneToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "IDLOCATION")
+	@Column(name = "IDLOCATION")
+	private Integer location;
 
 	public Integer getId() {
 		return Id;
@@ -93,35 +97,35 @@ public class Hospital {
 		this.createdAt = createdAt;
 	}
 
-	public Manager getManager() {
+	public Integer getManager() {
 		return manager;
 	}
 
-	public void setManager(Manager manager) {
+	public void setManager(Integer manager) {
 		this.manager = manager;
 	}
 
-	public Condition getCondition() {
+	public Integer getCondition() {
 		return condition;
 	}
 
-	public void setCondition(Condition condition) {
+	public void setCondition(Integer condition) {
 		this.condition = condition;
 	}
 
-	public District getDistrict() {
+	public Integer getDistrict() {
 		return district;
 	}
 
-	public void setDistrict(District district) {
+	public void setDistrict(Integer district) {
 		this.district = district;
 	}
 
-	public Location getLocation() {
+	public Integer getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(Integer location) {
 		this.location = location;
 	}
 
