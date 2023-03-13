@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>TismartUniversity - Condiciones</title>
+	
+	<style>
+	    button.ui-button {
+	        margin-right: .5rem;
+	    }
+	</style>
+
+</h:head>
+<h:body>
+
+<!-- 	menu -->
+<div class="card">
+    <h:form >
+
+       	<p:graphicImage name="logo-t1.png" library="images" style="width:150px"/>
+        <p:menubar>
+        	
+        	<p:menuitem value="Home" outcome="/index.xhtml" icon="pi pi-home"/>
+        
+        	<p:menuitem value="Condiciones" outcome="/pages/condition/index.xhtml" icon="pi pi-chevron-right"/>
+        	
+        	<p:menuitem value="Sedes" outcome="/pages/location/index.xhtml" icon="pi pi-chevron-right"/>
+        	
+        	<p:menuitem value="Gerentes" outcome="/pages/manager/index.xhtml" icon="pi pi-chevron-right"/>
+        	
+        	<p:menuitem value="Distritos" outcome="/pages/district/index.xhtml" icon="pi pi-chevron-right"/>
+        	
+        	<p:menuitem value="Provincias" outcome="/pages/province/index.xhtml" icon="pi pi-chevron-right"/>          
+
+            <p:divider layout="vertical"/>
+			
+			<f:facet name="options">
+                <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+            </f:facet>
+            
+        </p:menubar>
+    </h:form>
+</div>
+
+<p:growl id="messages"/>
+<!-- 	menu -->
+
+
+	<h2>
+		<h:outputText value="Lista Condiciones"></h:outputText>
+	</h2>
+	
+	<h:form>
+	<p:commandButton action="#{conditionBean.newCondition()}" value="Nueva Condición"/>
+    <div class="card">
+        <p:dataTable var="condition" value="#{conditionBean.getAllConditions()}">
+            <p:column headerText="Id">
+                <h:outputText value="#{condition.id}" />
+            </p:column>
+
+            <p:column headerText="Descripción">
+                <h:outputText value="#{condition.conditionDescription}" />
+            </p:column>
+
+            <p:column headerText="Fecha de Registro">
+                <h:outputText value="#{condition.createdAt}" />
+            </p:column>
+            
+            <p:column headerText="Acciones">
+				<p:commandButton action="#{conditionBean.editCondition(condition.id)}" value="Editar" />
+				<p:commandButton action="#{conditionBean.deleteCondition(condition.id)}" value="Eliminar" />
+			</p:column>
+		</p:dataTable>
+    </div>
+	</h:form>
+</h:body>
+</html>
