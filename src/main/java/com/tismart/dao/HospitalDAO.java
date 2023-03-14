@@ -15,7 +15,12 @@ import com.tismart.model.JPAUtil;
 
 public class HospitalDAO {
 
-EntityManager entity = JPAUtil.getEntityManagerFactory().createEntityManager();
+	private EntityManager entity;
+	
+	public HospitalDAO() {
+	    this.entity = JPAUtil.getEntityManagerFactory().createEntityManager();
+	}
+	 
 	
 	public void saveHospital(Hospital hospital) {
 		
@@ -83,30 +88,27 @@ EntityManager entity = JPAUtil.getEntityManagerFactory().createEntityManager();
 		try {
 	        StoredProcedureQuery storedProcedure = entity.createStoredProcedureQuery("HOSPITALS_PACKAGE.GET_ONE_HOSPITAL");
 	        storedProcedure.registerStoredProcedureParameter("v_idHospital", Integer.class, ParameterMode.IN);
-	        storedProcedure.registerStoredProcedureParameter("v_result", void.class, ParameterMode.REF_CURSOR);
-	        
-	        storedProcedure.setParameter("v_idHospital", id);
-	        
-	        storedProcedure.execute();
-	        
+	        storedProcedure.registerStoredProcedureParameter("v_result", void.class, ParameterMode.REF_CURSOR);	        
+	        storedProcedure.setParameter("v_idHospital", id);	        
+	        storedProcedure.execute();	        
 	        ResultSet resultSet = (ResultSet)storedProcedure.getOutputParameterValue("v_result");
 	        	        
-
-	        hospital.setId(resultSet.getInt("IDHOSPITAL"));
-	        hospital.setHospitalName(resultSet.getString("HOSPITALNAME"));
-	        hospital.setHospitalAge(Integer.parseInt(resultSet.getString("HOSPITALAGE")));
-	        hospital.setHospitalArea(Double.parseDouble(resultSet.getString("HOSPITALAREA")));
-	        hospital.setDistrict(Integer.parseInt(resultSet.getString("IDDISTRICT")));
-	        hospital.setLocation(Integer.parseInt(resultSet.getString("IDLOCATION")));
-	        hospital.setManager(Integer.parseInt(resultSet.getString("IDMANAGER")));
-	        hospital.setCondition(Integer.parseInt(resultSet.getString("IDCONDITION")));
-	        
-	        String dateString = resultSet.getString("CREATEDAT");
-	        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	        Date date = format.parse(dateString);
-	        
-	        hospital.setCreatedAt(date);
-
+	        if(resultSet.next()){
+	        	hospital.setId(resultSet.getInt("IDHOSPITAL"));
+	        	hospital.setHospitalName(resultSet.getString("HOSPITALNAME"));
+	        	hospital.setHospitalAge(Integer.parseInt(resultSet.getString("HOSPITALAGE")));
+	        	hospital.setHospitalArea(Double.parseDouble(resultSet.getString("HOSPITALAREA")));
+	        	hospital.setDistrict(Integer.parseInt(resultSet.getString("IDDISTRICT")));
+	        	hospital.setLocation(Integer.parseInt(resultSet.getString("IDLOCATION")));
+	        	hospital.setManager(Integer.parseInt(resultSet.getString("IDMANAGER")));
+	        	hospital.setCondition(Integer.parseInt(resultSet.getString("IDCONDITION")));
+	        	
+	        	String dateString = resultSet.getString("CREATEDAT");
+	        	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	        	Date date = format.parse(dateString);
+	        	
+	        	hospital.setCreatedAt(date);	        	
+	        }
 	        
 	    } catch (Exception ex) {
 	        ex.printStackTrace();

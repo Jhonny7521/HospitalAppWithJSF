@@ -16,7 +16,7 @@ public class JPAUtil {
 	}
 	
 	public static void shutdown() {
-		if (factory!=null) {
+		if (factory!=null && factory.isOpen()) {
 			factory.close();
 		}		
 	}

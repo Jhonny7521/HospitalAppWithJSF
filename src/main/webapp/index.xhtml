@@ -18,38 +18,33 @@
 </h:head>
 <h:body>
 
-<!-- 	menu -->
-<div class="card">
-    <h:form >
-
-       	<p:graphicImage name="logo-t1.png" library="images" style="width:150px"/>
-        <p:menubar>
-        	
-        	<p:menuitem value="Home" outcome="/index.xhtml" icon="pi pi-home"/>
-        
-        	<p:menuitem value="Condiciones" outcome="/pages/condition/index.xhtml" icon="pi pi-chevron-right"/>
-        	
-        	<p:menuitem value="Sedes" outcome="/pages/location/index.xhtml" icon="pi pi-chevron-right"/>
-        	
-        	<p:menuitem value="Gerentes" outcome="/pages/manager/index.xhtml" icon="pi pi-chevron-right"/>
-        	
-        	<p:menuitem value="Distritos" outcome="/pages/district/index.xhtml" icon="pi pi-chevron-right"/>
-        	
-        	<p:menuitem value="Provincias" outcome="/pages/province/index.xhtml" icon="pi pi-chevron-right"/>          
-
-            <p:divider layout="vertical"/>
-			
-			<f:facet name="options">
-                <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
-            </f:facet>
-            
-        </p:menubar>
-    </h:form>
-</div>
-
-<!-- 	menu -->
-
-
+	<div class="card">
+	    <h:form >
+	
+	       	<p:graphicImage name="logo-t1.png" library="images" style="width:150px"/>
+	        <p:menubar>
+	        	
+	        	<p:menuitem value="Home" outcome="/index.xhtml" icon="pi pi-home"/>
+	        
+	        	<p:menuitem value="Condiciones" outcome="/pages/condition/index.xhtml" icon="pi pi-chevron-right"/>
+	        	
+	        	<p:menuitem value="Sedes" outcome="/pages/location/index.xhtml" icon="pi pi-chevron-right"/>
+	        	
+	        	<p:menuitem value="Gerentes" outcome="/pages/manager/index.xhtml" icon="pi pi-chevron-right"/>
+	        	
+	        	<p:menuitem value="Distritos" outcome="/pages/district/index.xhtml" icon="pi pi-chevron-right"/>
+	        	
+	        	<p:menuitem value="Provincias" outcome="/pages/province/index.xhtml" icon="pi pi-chevron-right"/>          
+	
+	            <p:divider layout="vertical"/>
+				
+				<f:facet name="options">
+	                <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+	            </f:facet>
+	            
+	        </p:menubar>
+	    </h:form>
+	</div>
 
 	<p:growl id="messages"/>
 
@@ -65,9 +60,9 @@
 					    	<div class="col-5 d-flex flex-column justify-content-around">
 				    			<h:form>
 					    		<p:menu>
-					                <p:menuitem value="Ingresar" action="#{hospitalBean.newHospital}" icon="pi pi-plus"/>
-					                <p:menuitem value="Modificar" action="#{hospitalBean.editHospital}" icon="pi pi-refresh"/>
-					                <p:menuitem value="Eliminar" action="#{hospitalBean.deleteHospital}" icon="pi pi-times"/>
+					                <p:menuitem value="Ingresar" action="/pages/hospital/newHospital.xhtml" icon="pi pi-plus"/>
+					                <p:menuitem value="Modificar" action="#{hospitalBean.findAndUpdateHospitalById()}" icon="pi pi-refresh"/>
+					                <p:menuitem value="Eliminar" action="/pages/hospital/deleteHospital.xhtml" icon="pi pi-times"/>
 						            <p:menuitem value="Buscar" outcome="/pages/hospital/index.xhtml" icon="pi pi-search"/>
 						        </p:menu>
 						        </h:form>
